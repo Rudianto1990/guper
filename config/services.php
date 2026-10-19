@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'mediamtx' => [
+        'api_url' => env('MEDIAMTX_API_URL'),
+        'api_username' => env('MEDIAMTX_API_USERNAME'),
+        'api_password' => env('MEDIAMTX_API_PASSWORD'),
+        'hls_url' => env('MEDIAMTX_HLS_URL'),
+    ],
+
 ];

@@ -14,7 +14,10 @@ class PengaturanController extends Controller
      */
     public function index()
     {
-        $pengaturan = Pengaturan::first();
+        $pengaturan = Pengaturan::firstOrCreate([], [
+            'name' => config('app.name', 'Nama Guper'),
+        ]);
+
         return view('pages.admin.pengaturan.index', compact('pengaturan'));
     }
 

@@ -1,0 +1,15 @@
+services:
+  mediamtx:
+    image: bluenviron/mediamtx:1.21.2
+    container_name: guper-mediamtx
+    restart: unless-stopped
+    command: ["/mediamtx.yml"]
+    environment:
+      MTX_APIADDRESS: :9997
+      MTX_AUTHINTERNALUSERS_1_USER: ${MEDIAMTX_API_USERNAME:?Set MEDIAMTX_API_USERNAME in .env}
+      MTX_AUTHINTERNALUSERS_1_PASS: ${MEDIAMTX_API_PASSWORD:?Set MEDIAMTX_API_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:9997:9997"
+      - "8888:8888"
+    volumes:
+      - ./docker/mediamtx.yml:/mediamtx.yml:ro

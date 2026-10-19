@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-       
         DB::table('users')->insert([
             'name' => 'Admin',
             'email' => 'admin@mail.com',
@@ -32,6 +30,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('fatur123'),
             'roles' => 'user',
             'nip' => '1234567890',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         DB::table('users')->insert([
@@ -40,6 +40,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('rudi123'),
             'roles' => 'petugas',
             'nip' => '0987654321',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
 
         DB::table('users')->insert([
@@ -48,9 +50,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('rias123'),
             'roles' => 'sepervisior',
             'nip' => '123454321',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
-
-        
-        }
     }
 }

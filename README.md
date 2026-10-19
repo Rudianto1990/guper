@@ -3,6 +3,22 @@
 
 # Sistem Informasi Gudang Peralatan laravel 11 dengan template dashboard
 
+## Live CCTV RTSP dengan MediaMTX
+
+Browser tidak memutar RTSP secara langsung. Untuk kamera RTSP, Live CCTV memakai MediaMTX untuk mengambil RTSP dari kamera dan menyediakan HLS ke pemutar browser.
+
+1. Salin konfigurasi `MEDIAMTX_*` dari `.env.example` ke `.env`, lalu isi `MEDIAMTX_API_PASSWORD` dengan password acak yang kuat.
+2. Pastikan `MEDIAMTX_API_URL` dan `MEDIAMTX_HLS_URL` menunjuk ke alamat yang dapat diakses masing-masing oleh server Laravel dan browser.
+3. Jalankan gateway dari folder project:
+
+   ```powershell
+   docker compose -f docker-compose.mediamtx.yml up -d
+   ```
+
+4. Simpan alamat RTSP kamera di form CCTV. Saat tombol **Live** diklik, aplikasi mendaftarkan source RTSP ke MediaMTX dan memutar output HLS.
+
+API MediaMTX pada konfigurasi Compose hanya dipublikasikan ke `127.0.0.1`; jangan membuka port API `9997` ke jaringan publik. Untuk akses aplikasi dari komputer lain atau HTTPS, atur `MEDIAMTX_HLS_URL` ke host gateway yang dapat dicapai browser, dan sediakan konfigurasi HTTPS/CORS serta firewall yang sesuai. Host/container MediaMTX harus dapat menjangkau kamera RTSP.
+
 # Berikut cara upload project dari folder baru ke GitHub menggunakan Windows + Git Bash, dari awal sampai berhasil.
 1. Buat repository baru di GitHub
 1. Buka https://github.com/new
@@ -57,5 +73,4 @@ git push -u origin main
 
 # Ganti USERNAME dan nama repository sesuai milik Anda.
 7. Selesai
-
 

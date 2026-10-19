@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-
 class HomeController extends Controller
 {
     /**
@@ -27,15 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return app(DashboardController::class)->index();
     }
 
     public function admin()
     {
-        
-
-        return view('pages.admin.dashboard');
+        return app(DashboardController::class)->index();
     }
-
-    
 }
